@@ -1,0 +1,56 @@
+cabal-version:      3.0
+name:               haskell-learning
+version:            0.1.0.0
+synopsis:           Haskell deep-dive study plan
+build-type:         Simple
+
+common warnings
+    ghc-options:
+        -Wall
+        -Wcompat
+        -Wincomplete-uni-patterns
+        -Wincomplete-record-updates
+        -Wredundant-constraints
+
+-- Phases 1 and 2 (modules 0–6): base only.
+library core
+    import:           warnings
+    hs-source-dirs:   core
+    exposed-modules:
+        Testing.Runner
+    build-depends:    base >=4.17 && <5
+    default-language: Haskell2010
+
+-- Phases 3 and 4 (modules 7–12): containers and text allowed.
+library production
+    import:           warnings
+    hs-source-dirs:   production
+    exposed-modules:
+        Production
+    build-depends:
+        base >=4.17 && <5,
+        haskell-learning:core,
+        containers,
+        text
+    default-language: Haskell2010
+
+test-suite core-tests
+    import:           warnings
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test/core
+    main-is:          Main.hs
+    build-depends:
+        base >=4.17 && <5,
+        haskell-learning:core
+    default-language: Haskell2010
+
+test-suite production-tests
+    import:           warnings
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test/production
+    main-is:          Main.hs
+    build-depends:
+        base >=4.17 && <5,
+        haskell-learning:core,
+        haskell-learning:production
+    default-language: Haskell2010
