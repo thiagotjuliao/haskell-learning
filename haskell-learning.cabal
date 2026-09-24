@@ -2,6 +2,8 @@ cabal-version:      3.0
 name:               haskell-learning
 version:            0.1.0.0
 synopsis:           Haskell deep-dive study plan
+license:            MIT
+license-file:       LICENSE.md
 build-type:         Simple
 
 common warnings
