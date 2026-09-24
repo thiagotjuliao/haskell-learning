@@ -26,12 +26,12 @@ The setup is VS Code with the Haskell extension on top of HLS, installed through
 | `cabal build all` | Builds every library and test suite |
 | `cabal repl core` | GHCi with the modules loaded (`:t`, `:i`, `:k`, `:r` to reload) |
 | `cabal test all` | Runs the test suites (hand-rolled runner and mini-QuickCheck) |
-| `ghcid --command "cabal repl core"` | Recompiles on every save and shows errors right away |
+| `ghcid --command "ghci -Wall -icore -itest/core test/core/Main.hs" --test ":main"` | Reloads on every save, shows errors and reruns the core tests |
 
 ### Tips
 
 - **`-- >>>` comments:** writing `-- >>> map (+1) [1,2,3]` above a function shows an "Evaluate" button with the result inside the file. Handy for the expressiveness exercises.
-- **ghcid:** install with `cabal install ghcid` and keep it running in a separate terminal.
+- **ghcid:** install with `cabal install ghcid` and keep it running in a separate terminal. It calls `ghci` directly with `-icore -itest/core` instead of `cabal repl core-tests`, because the latter loads `core` as a prebuilt package and misses edits to it. This works while `core` is `base`-only; from module 7 on, the command changes.
 - **HLS failing or slow:** usually a version mismatch between GHC and HLS. Run `ghcup tui` and pick the versions marked "recommended" for both.
 
 ## Repo layout
@@ -52,7 +52,8 @@ haskell-learning/
 │   ├── core/Main.hs
 │   └── production/Main.hs
 └── docs/
-    └── plan.md
+    ├── plan.md
+    └── notes/             -- theory notes per module (M01.md, …)
 ```
 
 | Decision | Why |
@@ -64,7 +65,7 @@ haskell-learning/
 | `-Wall -Wcompat` and friends, no `-Werror` | Warnings stay visible without blocking experimentation |
 | `import Prelude hiding (…)` in module 1 | Reimplement `map`, `foldr` etc. without name clashes |
 
-Workflow: keep `ghcid --command "cabal repl core"` open while studying, `cabal test all` for the suite, and one commit per exercise or mini-project.
+Workflow: keep the `ghcid` command from the Tooling section open while studying, `cabal test all` for the suite, and one commit per exercise or mini-project.
 
 ## Phase 1 — Language foundations
 
@@ -77,6 +78,8 @@ The setup from the Tooling section above, always with `-Wall`. GHCi becomes a la
 - [ ] Habit of using typed holes and `:i` in GHCi
 
 ### Module 1 — Core expressiveness
+
+Notes: [notes/M01.md](notes/M01.md)
 
 ADTs, pattern matching, guards, `where`/`let`, `case`, currying, operator sections, composition (`.`), `$`, point-free style, list comprehensions, and the difference between `data`, `newtype` and `type`.
 
