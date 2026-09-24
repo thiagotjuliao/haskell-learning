@@ -1,14 +1,19 @@
 module Main (main) where
 
+import qualified M01.ListPreludeSpec as ListPrelude
 import Testing.Runner
 
 tests :: [TestGroup]
 tests =
-  let
-    g1 = group "arith" [assertEqual "sum" 4 (2 + 2), assertEqual "mul" 1 (1 * 1)]
-    g2 = group "strings" [assertEqual "concat" "abc" ("ab" ++ "c")]
-   in
-    [g1, g2]
+  sanity
+    ++ ListPrelude.tests
+
+-- | Smoke tests for the runner itself.
+sanity :: [TestGroup]
+sanity =
+  [ group "arith" [assertEqual "sum" 4 (2 + 2), assertEqual "mul" 1 (1 * 1)]
+  , group "strings" [assertEqual "concat" "abc" ("ab" ++ "c")]
+  ]
 
 main :: IO ()
 main = do
