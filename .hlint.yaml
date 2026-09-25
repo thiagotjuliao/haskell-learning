@@ -1,0 +1,6 @@
+# hlint configuration, read by the hlint CLI, by HLS (hints in the editor) and
+# by CI. Empty on purpose: every default hint applies. A hint the project
+# disagrees with is switched off here, with the reason, e.g.
+#
+#   # Explicit recursion is the point of these exercises.
+#   - ignore: {name: Use map}
