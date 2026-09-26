@@ -1,5 +1,6 @@
 module Main (main) where
 
+import qualified M01.ListPreludeFoldrSpec as ListPreludeFoldr
 import qualified M01.ListPreludeSpec as ListPrelude
 import Testing.Runner
 
@@ -7,6 +8,7 @@ tests :: [TestGroup]
 tests =
   sanity
     ++ ListPrelude.tests
+    ++ ListPreludeFoldr.tests
 
 -- | Smoke tests for the runner itself.
 sanity :: [TestGroup]
