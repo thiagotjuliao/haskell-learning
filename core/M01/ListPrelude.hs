@@ -1,5 +1,5 @@
 -- | Module 1, exercise 2: the list Prelude reimplemented with explicit recursion.
-module M01.ListPrelude where
+module M01.ListPrelude (filter, map, zipWith, foldl, foldr, takeWhile, dropWhile, span, words) where
 
 import Data.Char (isSpace)
 import Prelude hiding (dropWhile, filter, foldl, foldr, map, span, takeWhile, words, zipWith)
@@ -54,15 +54,6 @@ takeWhile _ [] = []
 takeWhile p (x : xs)
   | p x = x : takeWhile p xs
   | otherwise = []
-
--- >>> takeWhile2 (even) [2, 4, 5, 6 :: Int]
--- [2,4]
-takeWhile2 :: (a -> Bool) -> [a] -> [a]
-takeWhile2 p = foldr f []
-  where
-    f x xs
-      | p x = x : xs
-      | otherwise = []
 
 -- >>> dropWhile (even) [2, 4, 5, 6, 1 :: Int]
 -- [5,6,1]

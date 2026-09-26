@@ -1,5 +1,6 @@
 module Main (main) where
 
+import qualified M01.ListPreludeFoldrSpec as ListPreludeFoldr
 import qualified M01.ListPreludeSpec as ListPrelude
 import Testing.Runner
 
@@ -7,11 +8,12 @@ tests :: [TestGroup]
 tests =
   sanity
     ++ ListPrelude.tests
+    ++ ListPreludeFoldr.tests
 
 -- | Smoke tests for the runner itself.
 sanity :: [TestGroup]
 sanity =
-  [ group "arith" [assertEqual "sum" 4 (2 + 2), assertEqual "mul" 1 (1 * 1)]
+  [ group "arith" [assertEqual "sum" 4 (2 + 2 :: Int), assertEqual "mul" 1 (1 * 1 :: Int)]
   , group "strings" [assertEqual "concat" "abc" ("ab" ++ "c")]
   ]
 
