@@ -1,6 +1,7 @@
 module Main (main) where
 
 import qualified M01.ListPreludeFoldrSpec as ListPreludeFoldr
+import qualified M01.ListPreludePointFreeSpec as ListPreludePointFree
 import qualified M01.ListPreludeSpec as ListPrelude
 import Testing.Runner
 
@@ -9,6 +10,7 @@ tests =
   sanity
     ++ ListPrelude.tests
     ++ ListPreludeFoldr.tests
+    ++ ListPreludePointFree.tests
 
 -- | Smoke tests for the runner itself.
 sanity :: [TestGroup]
