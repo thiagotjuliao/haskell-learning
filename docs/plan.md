@@ -83,9 +83,9 @@ Notes: [notes/M01.md](notes/M01.md)
 
 ADTs, pattern matching, guards, `where`/`let`, `case`, currying, operator sections, composition (`.`), `$`, point-free style, list comprehensions, and the difference between `data`, `newtype` and `type`.
 
-- [ ] Reimplement the list Prelude: `map`, `filter`, `foldr`, `foldl`, `zipWith`, `takeWhile`, `span`, `words`
-- [ ] Each function three ways: explicit recursion, via `foldr` and point-free; compare readability
-- [ ] Tests: hand-rolled `assertEqual` and a minimal runner that counts passes and failures
+- [x] Reimplement the list Prelude: `map`, `filter`, `foldr`, `foldl`, `zipWith`, `takeWhile`, `span`, `words`
+- [x] Each function three ways: explicit recursion, via `foldr` and point-free; compare readability
+- [x] Tests: hand-rolled `assertEqual` and a minimal runner that counts passes and failures
 - [ ] Mini-project: arithmetic expression evaluator with variables (AST as an ADT, environment as a list of pairs)
 
 ### Module 2 — Base typeclasses
