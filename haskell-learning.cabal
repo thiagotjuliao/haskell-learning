@@ -22,6 +22,7 @@ library core
         M01.ListPrelude
         M01.ListPreludeFoldr
         M01.ListPreludePointFree
+        M01.Expr
         Testing.Runner
     build-depends:    base >=4.17 && <5
     default-language: Haskell2010
@@ -49,6 +50,7 @@ test-suite core-tests
         M01.ListPreludeFoldrSpec
         M01.ListPreludePointFreeSpec
         M01.ListPreludeSpec
+        M01.ExprSpec
     build-depends:
         base >=4.17 && <5,
         haskell-learning:core

@@ -86,7 +86,7 @@ ADTs, pattern matching, guards, `where`/`let`, `case`, currying, operator sectio
 - [x] Reimplement the list Prelude: `map`, `filter`, `foldr`, `foldl`, `zipWith`, `takeWhile`, `span`, `words`
 - [x] Each function three ways: explicit recursion, via `foldr` and point-free; compare readability
 - [x] Tests: hand-rolled `assertEqual` and a minimal runner that counts passes and failures
-- [ ] Mini-project: arithmetic expression evaluator with variables (AST as an ADT, environment as a list of pairs)
+- [x] Mini-project: arithmetic expression evaluator with variables (AST as an ADT, environment as a list of pairs)
 
 ### Module 2 — Base typeclasses
 
