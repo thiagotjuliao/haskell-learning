@@ -90,6 +90,8 @@ ADTs, pattern matching, guards, `where`/`let`, `case`, currying, operator sectio
 
 ### Module 2 — Base typeclasses
 
+Notes: [notes/M02.md](notes/M02.md)
+
 `Eq`, `Ord`, `Show`, `Read`, `Enum`, `Bounded` and the numeric hierarchy (`Num`, `Integral`, `Fractional`, `Floating`, `Real`). Concepts: superclasses, default methods, minimal complete definition, `deriving` versus manual instances, coherence and orphan instances.
 
 - [ ] Hand-write instances that are usually derived and check them against the derived ones

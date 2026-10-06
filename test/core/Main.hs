@@ -4,6 +4,9 @@ import qualified M01.ExprSpec as Expr
 import qualified M01.ListPreludeFoldrSpec as ListPreludeFoldr
 import qualified M01.ListPreludePointFreeSpec as ListPreludePointFree
 import qualified M01.ListPreludeSpec as ListPrelude
+import qualified M02.FractionSpec as Fraction
+import qualified M02.InstancesSpec as Instances
+import qualified M02.MatrixSpec as Matrix
 import Testing.Runner
 
 tests :: [TestGroup]
@@ -13,6 +16,9 @@ tests =
     ++ ListPreludeFoldr.tests
     ++ ListPreludePointFree.tests
     ++ Expr.tests
+    ++ Instances.tests
+    ++ Fraction.tests
+    ++ Matrix.tests
 
 -- | Smoke tests for the runner itself.
 sanity :: [TestGroup]
