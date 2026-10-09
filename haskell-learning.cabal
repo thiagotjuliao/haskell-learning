@@ -27,6 +27,8 @@ library core
         M02.Instances
         M02.Matrix
         Testing.Runner
+    other-modules:
+        Common.Utils
     build-depends:    base >=4.17 && <5
     default-language: Haskell2010
 

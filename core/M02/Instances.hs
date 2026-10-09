@@ -12,10 +12,7 @@ module M02.Instances (
   Tree (..),
 ) where
 
--- | Helpers
-thenCompare :: Ordering -> Ordering -> Ordering
-thenCompare EQ c = c
-thenCompare c _ = c
+import Common.Utils (thenCompare)
 
 -- | A: enumeration
 data DayOfWeekDerived
