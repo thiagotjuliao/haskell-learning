@@ -94,9 +94,9 @@ Notes: [notes/M02.md](notes/M02.md)
 
 `Eq`, `Ord`, `Show`, `Read`, `Enum`, `Bounded` and the numeric hierarchy (`Num`, `Integral`, `Fractional`, `Floating`, `Real`). Concepts: superclasses, default methods, minimal complete definition, `deriving` versus manual instances, coherence and orphan instances.
 
-- [ ] Hand-write instances that are usually derived and check them against the derived ones
-- [ ] Mini-project: your own `Rational` or `Money` with a full `Num` instance
-- [ ] Mini-project: 2x2 matrix with `Num` and Fibonacci by exponentiation
+- [x] Hand-write instances that are usually derived and check them against the derived ones
+- [x] Mini-project: your own `Rational` or `Money` with a full `Num` instance
+- [x] Mini-project: 2x2 matrix with `Num` and Fibonacci by exponentiation
 
 ## Phase 2 — Algebraic hierarchy
 
