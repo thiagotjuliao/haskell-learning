@@ -7,6 +7,11 @@ import qualified M01.ListPreludeSpec as ListPrelude
 import qualified M02.FractionSpec as Fraction
 import qualified M02.InstancesSpec as Instances
 import qualified M02.MatrixSpec as Matrix
+import qualified M03.DerivingSpec as Deriving
+import qualified M03.MonoidsSpec as Monoids
+import qualified M03.StatsSpec as Stats
+import qualified Testing.CheckSpec as Check
+import qualified Testing.RandomSpec as Random
 import Testing.Runner
 
 tests :: [TestGroup]
@@ -19,6 +24,11 @@ tests =
     ++ Instances.tests
     ++ Fraction.tests
     ++ Matrix.tests
+    ++ Random.tests
+    ++ Check.tests
+    ++ Monoids.tests
+    ++ Deriving.tests
+    ++ Stats.tests
 
 -- | Smoke tests for the runner itself.
 sanity :: [TestGroup]
