@@ -26,6 +26,11 @@ library core
         M02.Fraction
         M02.Instances
         M02.Matrix
+        M03.Deriving
+        M03.Monoids
+        M03.Stats
+        Testing.Check
+        Testing.Random
         Testing.Runner
     other-modules:
         Common.Utils
@@ -59,6 +64,11 @@ test-suite core-tests
         M02.FractionSpec
         M02.InstancesSpec
         M02.MatrixSpec
+        M03.DerivingSpec
+        M03.MonoidsSpec
+        M03.StatsSpec
+        Testing.CheckSpec
+        Testing.RandomSpec
     build-depends:
         base >=4.17 && <5,
         haskell-learning:core
