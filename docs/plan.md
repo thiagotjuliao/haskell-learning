@@ -44,6 +44,7 @@ haskell-learning/
 ├── haskell-learning.cabal
 ├── core/                  -- Phases 1 and 2 (modules 0–6), base only
 │   ├── Testing/Runner.hs  -- hand-rolled runner (module 1)
+│   ├── Testing/Random.hs  -- pseudo-random generator (module 3)
 │   ├── Testing/Check.hs   -- mini-QuickCheck (module 3)
 │   └── M01/ … M06/
 ├── production/            -- Phases 3 and 4 (modules 7–12), + containers and text
@@ -101,6 +102,8 @@ Notes: [notes/M02.md](notes/M02.md)
 ## Phase 2 — Algebraic hierarchy
 
 ### Module 3 — Semigroup and Monoid
+
+Notes: [notes/M03.md](notes/M03.md)
 
 Laws and the classic newtypes: `Sum`, `Product`, `Min`, `Max`, `First`, `Last`, `Any`, `All`, `Endo`, `Dual`. They exist because the same type can have several monoids.
 
