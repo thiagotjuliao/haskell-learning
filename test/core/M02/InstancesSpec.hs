@@ -119,7 +119,7 @@ users = [(User n e a, UserDerived n e a) | (n, e, a) <- userFields]
 -- derived output is renamed before comparing, since the constructor names
 -- differ.
 agreesWithDerived ::
-  (Eq m, Ord m, Show m, Eq d, Ord d, Show d) =>
+  (Ord m, Show m, Ord d, Show d) =>
   [(String, String)] ->
   [(m, d)] ->
   [TestResult]
