@@ -20,7 +20,8 @@ next (Seed w) = (w' .>>. 16, Seed w')
     c = 1013904223
     w' = (a * w + c) .&. lowBitsMask
 
--- | Since a 16 bits number has a maximum value of 65_535 this functions builds a 32 bits number using 16 bits composition
+-- | Since a 16 bits number has a maximum value of 65_535 this functions builds a 32 bits
+-- number using 16 bits composition
 next32 :: Seed -> (Word64, Seed)
 next32 s = (w, s2)
   where
