@@ -5,6 +5,9 @@ module Testing.Runner (
   assertEqual,
   group,
   runTests,
+  success,
+  failure,
+  hasFailed,
 ) where
 
 import Control.Monad (when)
@@ -27,6 +30,17 @@ instance Monoid TestMetrics where
 
 data TestGroupResult = TestGroupResult String [String] TestMetrics
   deriving (Show)
+
+success :: String -> TestResult
+success name = Success name
+
+failure :: String -> String -> TestResult
+failure name msg = Failure name msg
+
+hasFailed :: TestResult -> Bool
+hasFailed t = case t of
+  Success _ -> False
+  Failure _ _ -> True
 
 toMetric :: TestResult -> TestMetrics
 toMetric (Success _) = TestMetrics 1 0
