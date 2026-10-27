@@ -79,6 +79,9 @@ instance (Arbitrary a) => Arbitrary [a] where
 instance (Arbitrary a, Arbitrary b) => Arbitrary (a, b) where
   arbitrary = pair arbitrary arbitrary
 
+instance (Arbitrary a) => Arbitrary (Maybe a) where
+  arbitrary = arbitrary `andThen` \a -> oneOf Nothing [Just a]
+
 errorMsg :: (Show a) => String -> a -> Seed -> String
 errorMsg name a s =
   "property "

@@ -152,6 +152,10 @@ arbitraryTests =
         []
         (filter (> 20) (map length (draws (arbitrary :: Gen [Int]))))
     , assertEqual
+        "Maybe gives both Nothing and Just"
+        (True, True)
+        (any (== Nothing) maybes, any (/= Nothing) maybes)
+    , assertEqual
         "pair halves are independent"
         True
         (length (filter (uncurry (==)) (draws (arbitrary :: Gen (Int, Int)))) < 5)
@@ -159,6 +163,7 @@ arbitraryTests =
   where
     ints = draws (arbitrary :: Gen Int)
     bools = draws (arbitrary :: Gen Bool)
+    maybes = draws (arbitrary :: Gen (Maybe Int))
 
 -- | The runner functions forAll builds its result from.
 resultTests :: TestGroup
