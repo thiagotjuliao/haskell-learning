@@ -29,6 +29,9 @@ library core
         M03.Deriving
         M03.Monoids
         M03.Stats
+        M04.FileSystem
+        M04.Functors
+        M04.Tree
         Testing.Check
         Testing.Random
         Testing.Runner
@@ -67,6 +70,10 @@ test-suite core-tests
         M03.DerivingSpec
         M03.MonoidsSpec
         M03.StatsSpec
+        M04.FileSystemSpec
+        M04.FunctorsSpec
+        M04.LawsSpec
+        M04.TreeSpec
         Testing.CheckSpec
         Testing.RandomSpec
     build-depends:

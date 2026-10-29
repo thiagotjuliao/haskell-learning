@@ -115,6 +115,8 @@ Laws and the classic newtypes: `Sum`, `Product`, `Min`, `Max`, `First`, `Last`, 
 
 ### Module 4 — Functor and Foldable
 
+Notes: [notes/M04.md](notes/M04.md)
+
 Kinds (`* -> *`), why `Either e` and `(,) a` are functors, and the function functor `(->) r`. In `Foldable`, `foldMap` alone derives `length`, `sum`, `elem` and `toList`.
 
 - [ ] Instances for a binary tree and a rose tree

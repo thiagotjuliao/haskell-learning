@@ -10,6 +10,10 @@ import qualified M02.MatrixSpec as Matrix
 import qualified M03.DerivingSpec as Deriving
 import qualified M03.MonoidsSpec as Monoids
 import qualified M03.StatsSpec as Stats
+import qualified M04.FileSystemSpec as FileSystem
+import qualified M04.FunctorsSpec as Functors
+import qualified M04.LawsSpec as Laws
+import qualified M04.TreeSpec as Tree
 import qualified Testing.CheckSpec as Check
 import qualified Testing.RandomSpec as Random
 import Testing.Runner
@@ -29,6 +33,10 @@ tests =
     ++ Monoids.tests
     ++ Deriving.tests
     ++ Stats.tests
+    ++ Functors.tests
+    ++ Tree.tests
+    ++ Laws.tests
+    ++ FileSystem.tests
 
 -- | Smoke tests for the runner itself.
 sanity :: [TestGroup]
