@@ -107,11 +107,11 @@ Notes: [notes/M03.md](notes/M03.md)
 
 Laws and the classic newtypes: `Sum`, `Product`, `Min`, `Max`, `First`, `Last`, `Any`, `All`, `Endo`, `Dual`. They exist because the same type can have several monoids.
 
-- [ ] Hand-rolled pseudo-random generator (a simple LCG or splitmix), since `random` is not part of `base`
-- [ ] Tests (milestone): hand-rolled mini-QuickCheck, with `newtype Gen a = Gen (Seed -> (a, Seed))`, an `Arbitrary` class and `forAll`
-- [ ] Test the Semigroup and Monoid laws with the mini-QuickCheck
-- [ ] Derive instances for your own newtypes with `GeneralizedNewtypeDeriving` and `DerivingVia`, comparing with the manual ones
-- [ ] Mini-project: single-pass statistics aggregator (count, sum, min, max, mean) as one composite monoid
+- [x] Hand-rolled pseudo-random generator (a simple LCG or splitmix), since `random` is not part of `base`
+- [x] Tests (milestone): hand-rolled mini-QuickCheck, with `newtype Gen a = Gen (Seed -> (a, Seed))`, an `Arbitrary` class and `forAll`
+- [x] Test the Semigroup and Monoid laws with the mini-QuickCheck
+- [x] Derive instances for your own newtypes with `GeneralizedNewtypeDeriving` and `DerivingVia`, comparing with the manual ones
+- [x] Mini-project: single-pass statistics aggregator (count, sum, min, max, mean) as one composite monoid
 
 ### Module 4 — Functor and Foldable
 
