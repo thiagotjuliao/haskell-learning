@@ -13,6 +13,7 @@ tests =
   [ rangeTests
   , oneOfTests
   , listOfTests
+  , listUpToTests
   , pairTests
   , combinatorTests
   , arbitraryTests
@@ -81,6 +82,20 @@ listOfTests =
     headOr xs = case xs of
       x : _ -> x
       [] -> -1
+
+listUpToTests :: TestGroup
+listUpToTests =
+  group
+    "Gen: listUpTo"
+    [ assertEqual "lengths inside [0, 3]" [] (filter (\n -> n < 0 || n > 3) lengths)
+    , assertEqual "empty and full lists both appear" (True, True) (reaches 0 3 lengths)
+    , assertEqual
+        "a bound of 0 gives only empty lists"
+        [0]
+        (unique (map length (draws (listUpTo 0 (range 0 9)))))
+    ]
+  where
+    lengths = map length (draws (listUpTo 3 (range 0 9)))
 
 pairTests :: TestGroup
 pairTests =
