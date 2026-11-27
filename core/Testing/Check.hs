@@ -5,6 +5,7 @@ module Testing.Check (
   range,
   oneOf,
   listOf,
+  listUpTo,
   pair,
   constant,
   andThen,
@@ -47,15 +48,17 @@ at a n (h : t)
 oneOf :: a -> [a] -> Gen a
 oneOf a as = range 0 (length as) `andThen` \i -> constant (at a i as)
 
-listOf :: Gen a -> Gen [a]
-listOf ga = len `andThen` \n -> f n
+listUpTo :: Int -> Gen a -> Gen [a]
+listUpTo len ga = (range 0 len) `andThen` \n -> f n
   where
-    len = range 0 20
     f n =
       foldr
         (\g gs -> g `andThen` \a -> gs `andThen` \as -> constant (a : as))
         (constant [])
         (replicate n ga)
+
+listOf :: Gen a -> Gen [a]
+listOf ga = listUpTo 20 ga
 
 pair :: Gen a -> Gen b -> Gen (a, b)
 pair ga gb = ga `andThen` \a -> (gb `andThen` \b -> constant (a, b))
