@@ -1,3 +1,6 @@
+{-# LANGUAGE DeriveFoldable #-}
+{-# LANGUAGE DeriveFunctor #-}
+
 -- | Tests for "M04.Tree". 'length', 'sum', 'elem', 'maximum' and 'toList' all
 -- come from 'foldMap', so checking them only against each other would pass
 -- for a 'foldMap' that dropped or repeated a subtree. 'size' counts nodes by
@@ -9,8 +12,21 @@ import M04.Tree
 import Testing.Check (Gen, arbitrary, forAll, pair)
 import Testing.Runner
 
+data TreeD a = LeafD | NodeD (TreeD a) a (TreeD a)
+  deriving (Eq, Show, Functor, Foldable)
+
+toTreeD :: Tree a -> TreeD a
+toTreeD Leaf = LeafD
+toTreeD (Node l a r) = NodeD (toTreeD l) a (toTreeD r)
+
+data RoseD a = RoseD a [RoseD a]
+  deriving (Eq, Show, Functor, Foldable)
+
+toRoseD :: Rose a -> RoseD a
+toRoseD (Rose a children) = RoseD a (toRoseD <$> children)
+
 tests :: [TestGroup]
-tests = [treeExamples, treeProperties, roseExamples, roseProperties]
+tests = [treeExamples, treeProperties, roseExamples, roseProperties, treeDerived, roseDerived]
 
 trees :: Gen (Tree Int)
 trees = arbitrary
@@ -98,4 +114,24 @@ roseProperties =
       forAll "maximum" roses (\r -> maximum r == maximum (toList r))
     , forAll "fmap maps toList" roses (\r -> toList (fmap (+ 1) r) == map (+ 1) (toList r))
     , forAll "fmap keeps the size" roses (\r -> roseSize (fmap show r) == roseSize r)
+    ]
+
+-- | DeriveFoldable folds the fields left to right, so Node l a r is in order
+-- and Rose a children is pre-order: the same orders as the hand-written ones.
+treeDerived :: TestGroup
+treeDerived =
+  group
+    "Tree: derived agrees with manual"
+    [ forAll "toList" trees (\t -> toList t == toList (toTreeD t))
+    , forAll "fmap" trees (\t -> toTreeD (fmap (+ 1) t) == fmap (+ 1) (toTreeD t))
+    , forAll "fmap show" trees (\t -> toTreeD (fmap show t) == fmap show (toTreeD t))
+    ]
+
+roseDerived :: TestGroup
+roseDerived =
+  group
+    "Rose: derived agrees with manual"
+    [ forAll "toList" roses (\r -> toList r == toList (toRoseD r))
+    , forAll "fmap" roses (\r -> toRoseD (fmap (+ 1) r) == fmap (+ 1) (toRoseD r))
+    , forAll "fmap show" roses (\r -> toRoseD (fmap show r) == fmap show (toRoseD r))
     ]
